@@ -5,7 +5,7 @@
     )
 }}
 
-CREATE OR REPLACE TABLE "{{ database }}"."{{ schema }}"."CONTACT" (
+CREATE OR REPLACE TABLE "{{ database }}"."{{ schema }}"."CONTACT1" (
 FIRST_NAME VARCHAR(100),
 LAST_NAME VARCHAR(100)
 )
