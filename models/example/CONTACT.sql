@@ -16,5 +16,6 @@ DateOfBirth date,
 house_no number,
 testCol varchar(32),
 name VARCHAR,
-testcolumn number
+testcolumn number,
+t1 number
 )

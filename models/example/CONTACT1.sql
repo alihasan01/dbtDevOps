@@ -11,5 +11,6 @@ LAST_NAME VARCHAR(120),
 EMAIL VARCHAR(100),
 STREETADDRESS VARCHAR(100),
 description text,
-contact varchar(16)
+contact varchar(16),
+t1 number
 )

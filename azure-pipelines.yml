@@ -32,5 +32,5 @@ steps:
     export PATH=$PATH:/home/vsts_azpcontainer/.local/bin
     dbt compile
     dbt test
-    dbt -d run -m CONTACT1
+    dbt run
   displayName: 'Compile, Test, and Run'
