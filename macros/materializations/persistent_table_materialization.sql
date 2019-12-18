@@ -106,7 +106,18 @@
 
         -- CASE 3 : Columns were renamed
         --  This is equivalent of dropped and renamed hence no additional logic needed
-
+		{%- set columns = adapter.get_columns_in_relation(tmp_relation) -%}		  
+		{% for column in columns %}
+		  {{ log("Column: " ~ column, info=true) }}
+		{% endfor %}
+		{% set columns_types = adapter.get_columns_in_relation(tmp_relation) %}
+		{%- set alter_cols_csv = columns_types | map(attribute="name") | join(', ') -%}
+		{{ log("COL_ALTERED : " ~ alter_cols_csv )}}
+		{% call statement('alter_cols') %}
+			{% for col in columns_types %}
+			alter table {{current_relation}} alter column "{{col.name}}" {{col.data_type}};
+			{% endfor %}
+		{%- endcall %}
         -- CASE 4 : Column data type changed
         --  TODO identify and log if datatype are detected
         -- get_columns_in_relation
