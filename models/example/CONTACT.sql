@@ -15,5 +15,6 @@ contact VARCHAR(100),
 DateOfBirth date,
 house_no number,
 testCol varchar(32),
-name VARCHAR
+name VARCHAR,
+testcolumn number
 )
