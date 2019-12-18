@@ -7,8 +7,9 @@
 
 CREATE OR REPLACE TABLE "{{ database }}"."{{ schema }}"."CONTACT1" (
 FIRST_NAME VARCHAR(100),
-LAST_NAME VARCHAR(100),
+LAST_NAME VARCHAR(120),
 EMAIL VARCHAR(100),
 STREETADDRESS VARCHAR(100),
-description text
+description text,
+contact varchar(16)
 )
