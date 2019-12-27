@@ -11,9 +11,8 @@
 
     {%- set unique_key = config.get('unique_key') -%}
      {%- set full_refresh_mode = (flags.FULL_REFRESH == True) -%}
-    {%- set identifier = model['alias'] -%}
-
-    {%- set current_relation = adapter.get_relation(database=database, schema=schema, identifier=identifier) -%}
+	{%- set identifier = model['alias'] -%}
+	{%- set current_relation = adapter.get_relation(database=database, schema=schema, identifier=identifier) -%}
 
     {%- set backup_suffix_dt = py_current_timestring() -%}
     {%- set backup_table_suffix = config.get('backup_table_suffix', default='_DBT_BACKUP_') -%}
@@ -53,14 +52,12 @@
     {% if current_relation_exists_as_table %}
         {{ clone_table_relation_if_exists(current_relation ,backup_relation) }}
     {% endif %}
-
     -- build model
     {% if full_refresh_mode or current_relation is none -%}
 
         {%- call statement('main') -%}
             {{ create_table_stmt_fromfile(target_relation, sql) }}
         {%- endcall -%}
-
         -- migrate the data over
         {% if migrate_data_over_flg and current_relation is not none %}
             {{ log("Migrating data from  " ~ backup_relation ~ " to " ~ target_relation) }}
@@ -106,11 +103,17 @@
 
         -- CASE 3 : Columns were renamed
         --  This is equivalent of dropped and renamed hence no additional logic needed
+		{% if current_relation == tmp_relation %}
+        {{ log("hello world") }}
+		{% endif %}
+		
 		{%- set columns = adapter.get_columns_in_relation(tmp_relation) -%}		  
 		{% for column in columns %}
 		  {{ log("Column: " ~ column, info=true) }}
 		{% endfor %}
 		{% set columns_types = adapter.get_columns_in_relation(tmp_relation) %}
+		{% set curr_columns_types = adapter.get_columns_in_relation(current_relation) %}
+
 		{%- set alter_cols_csv = columns_types | map(attribute="name") | join(', ') -%}
 		{{ log("COL_ALTERED : " ~ alter_cols_csv )}}
 		{% call statement('alter_cols') %}

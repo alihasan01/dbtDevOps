@@ -6,11 +6,11 @@
 }}
 
 CREATE OR REPLACE TABLE "{{ database }}"."{{ schema }}"."CONTACT1" (
-FIRST_NAME VARCHAR(100),
+FIRST_NAME VARCHAR(120),
 LAST_NAME VARCHAR(120),
-EMAIL VARCHAR(100),
+EMAIL TEXT,
 STREETADDRESS VARCHAR(100),
 description text,
-contact varchar(16),
-t1 number
+martial_status varchar2,
+contact number
 )

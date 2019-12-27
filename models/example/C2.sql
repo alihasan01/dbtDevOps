@@ -1,11 +1,11 @@
 {{
     config(materialized='persistent_table'
         ,retain_previous_version_flg=false
-        ,migrate_data_over_flg=true
+        ,migrate_data_over_flg=false
     )
 }}
 
-CREATE OR REPLACE TABLE "{{ database }}"."{{ schema }}"."CONTACT" (
+CREATE OR REPLACE TABLE "{{ database }}"."{{ schema }}"."C2" (
 FIRST_NAME VARCHAR(160),
 LAST_NAME VARCHAR(100),
 EMAIL VARCHAR(100),

@@ -47,7 +47,7 @@
 {% endmacro %}
 
 {%- macro create_table_stmt_fromfile(relation, sql) -%}
-    {{ log("Creating table " ~ relation) }}
+    {{ log("Creating table abc" ~ relation) }}
 
     {{ sql }}
     ;
