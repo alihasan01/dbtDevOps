@@ -11,11 +11,5 @@ LAST_NAME VARCHAR(100),
 EMAIL VARCHAR(100),
 STREETADDRESS VARCHAR(100),
 CITY VARCHAR(100),
-contact VARCHAR(100),
-DateOfBirth date,
-house_no number,
-testCol varchar(16),
-name VARCHAR,
-testcolumn number,
-t1 number
+contact VARCHAR(100)
 )
